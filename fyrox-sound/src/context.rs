@@ -77,6 +77,11 @@ pub enum DistanceModel {
     ///         `max_distance` - distance at which decay will stop,
     ///         `rolloff_factor` - coefficient that defines how fast volume will decay
     ExponentDistance = 3,
+
+	 BetterLinearDistance = 4,
+    //CustomDistance(fn(f32) -> f32) = 4,
+    //CustomDistance(Box<dyn Fn(f32) -> f32>) = 4,
+    //CustomDistance(Box<fn(f32) -> f32>) = 4,
 }
 
 impl Default for DistanceModel {

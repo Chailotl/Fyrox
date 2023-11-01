@@ -428,6 +428,9 @@ impl SoundSource {
                 1.0 - self.radius * (distance - self.radius) / (self.max_distance - self.radius)
             }
             DistanceModel::ExponentDistance => (distance / self.radius).powf(-self.rolloff_factor),
+            DistanceModel::BetterLinearDistance => (1.0
+                - self.position.metric_distance(&listener.position()) / self.max_distance)
+                .clamp(0.0, 1.0), //DistanceModel::CustomDistance(func) => func(0.0),
         }
     }
 
